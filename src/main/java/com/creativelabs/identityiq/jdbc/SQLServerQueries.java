@@ -51,6 +51,17 @@ public class SQLServerQueries {
         return list;
     }
 
+    public List<String> businessRolesWithOwner(Statement statement) throws SQLException {
+        String sqlQuery = "SELECT [name] FROM [identityiq].[identityiq].[spt_bundle] where type = 'business' and owner is not NULL";
+        ResultSet rs = statement.executeQuery(sqlQuery);
+        List<String> list = new ArrayList<>();
+        while(rs.next()) {
+            list.add(rs.getString("NAME") );
+        }
+        rs.close();
+        return list;
+    }
+
     public static void main(String[] args) throws SQLException {
         String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=identityiq";
         String user = "sa";
@@ -59,6 +70,7 @@ public class SQLServerQueries {
         Statement statement = queries.openConnection(dbURL, user, pass);
         System.out.println(queries.activeManagerQuery(statement));
         System.out.println(queries.applicationWithoutOwnerQuery(statement));
+        System.out.println(queries.businessRolesWithOwner(statement));
         queries.closeConnection(statement);
     }
 
