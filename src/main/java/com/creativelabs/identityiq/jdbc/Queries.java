@@ -13,7 +13,6 @@ public class Queries {
             String pass = "march";
             conn = DriverManager.getConnection(dbURL, user, pass);
             if (conn != null) {
-                DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
                 Statement statement = DriverManager.getConnection(dbURL, user, pass).createStatement();
                 ResultSet rs = statement.executeQuery(sqlQuery);
 
@@ -47,7 +46,6 @@ public class Queries {
             String pass = "march";
             conn = DriverManager.getConnection(dbURL, user, pass);
             if (conn != null) {
-                DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
                 Statement statement = DriverManager.getConnection(dbURL, user, pass).createStatement();
                 ResultSet rs = statement.executeQuery(sqlQuery);
 

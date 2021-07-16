@@ -24,7 +24,7 @@ public class JdbcSQLServerConnectionInfo {
             String pass = "march";
             conn = DriverManager.getConnection(dbURL, user, pass);
             if (conn != null) {
-                DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
+                DatabaseMetaData dm = conn.getMetaData();
                 System.out.println("Driver name: " + dm.getDriverName());
                 System.out.println("Driver version: " + dm.getDriverVersion());
                 System.out.println("Product name: " + dm.getDatabaseProductName());
